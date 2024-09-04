@@ -17,7 +17,7 @@
 #
 
 # ensures script can run only once at a time
-pidof -o %PPID -x $0 >/dev/null && echo "Script $0 already running" && exit 1
+pidof -o %PPID -x $0 >/dev/null && echo "脚本 $0 已经在运行" && exit 1
 
 function move_output() {
     sudo hda-verb /dev/snd/hwC0D0 0x16 0x701 "$@" > /dev/null 2> /dev/null
@@ -78,11 +78,11 @@ while true; do
     if [ ${status} -ne ${old_status} ]; then
 	case "${status}" in
 	    1)
-		message="Headphones disconnected"
+		message="耳机已断开连接"
 		switch_to_speaker
 		;;
 	    2)
-		message="Headphones connected"
+		message="耳机已连接"
 		switch_to_headphones
 		;;
 	esac
